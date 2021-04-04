@@ -312,9 +312,10 @@ public class LGGame implements Listener{
 			p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 99999, 180, false, false));
 			lgp.setPlace(original.indexOf(location));
 			placements.put(lgp.getPlace(), lgp);
+			p.setGameMode(GameMode.SURVIVAL);
 			p.teleport(new Location(p.getWorld(), location.get(0)+0.5, location.get(1), location.get(2)+0.5, location.get(3).floatValue(), location.get(4).floatValue()));
 			WrapperPlayServerUpdateHealth update = new WrapperPlayServerUpdateHealth();
-			update.setFood(6);
+			update.setFood(20);
 			update.setFoodSaturation(1);
 			update.setHealth(20);
 			update.sendPacket(p);
@@ -373,7 +374,7 @@ public class LGGame implements Listener{
 
 				role.join(player);
 				WrapperPlayServerUpdateHealth update = new WrapperPlayServerUpdateHealth();
-				update.setFood(6);
+				update.setFood(20);
 				update.setFoodSaturation(1);
 				update.setHealth(20);
 				update.sendPacket(player.getPlayer());

@@ -172,7 +172,7 @@ public class MainLg extends JavaPlugin{
 				LGPlayer player = LGPlayer.thePlayer(event.getPlayer());
 				if(player.getGame() != null && player.getGame().isStarted()) {
 					WrapperPlayServerUpdateHealth health = new WrapperPlayServerUpdateHealth(event.getPacket());
-					health.setFood(6);
+					health.setFood(20);
 				}
 			}
 		});
