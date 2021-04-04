@@ -803,6 +803,7 @@ public class LGGame implements Listener{
 	}
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onSkinChange(LGSkinLoadEvent e) {
+		if (MainLg.getInstance().getConfig().getBoolean("disableSkins")) return;
 		if(e.getGame() == this) {
 			e.getProfile().getProperties().removeAll("textures");
 			if(getMayor() == e.getPlayer())

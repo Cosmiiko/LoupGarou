@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
 import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import fr.leomelki.loupgarou.MainLg;
 import fr.leomelki.loupgarou.classes.LGCustomSkin;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
@@ -156,6 +157,7 @@ public class RLoupGarou extends Role{
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onSkinChange(LGSkinLoadEvent e) {
+		if (MainLg.getInstance().getConfig().getBoolean("disableSkins")) return;
 		if(e.getGame() == getGame())
 			if(getPlayers().contains(e.getPlayer()) && getPlayers().contains(e.getTo()) && showSkins) {
 				e.getProfile().getProperties().removeAll("textures");

@@ -220,6 +220,7 @@ public class LGPlayer {
 	}
 	
 	public void updateSkin() {
+		if (MainLg.getInstance().getConfig().getBoolean("disableSkins")) return;
 		if(getGame() != null && player != null) {
 			for(LGPlayer lgp : getGame().getInGame()) {
 				if(lgp == this) {
@@ -237,6 +238,7 @@ public class LGPlayer {
 		}
 	}
 	public void updateOwnSkin() {
+		if (MainLg.getInstance().getConfig().getBoolean("disableSkins")) return;
 		if(player != null) {
 			//On change son skin avec un packet de PlayerInfo (dans le tab)
 			WrapperPlayServerPlayerInfo infos = new WrapperPlayServerPlayerInfo();
