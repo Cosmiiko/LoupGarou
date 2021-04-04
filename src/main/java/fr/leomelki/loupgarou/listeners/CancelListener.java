@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -54,16 +55,16 @@ public class CancelListener implements Listener{
 	}
 	@EventHandler
 	public void onDrop(PlayerDropItemEvent e) {
-		e.setCancelled(true);
+		if (!e.getPlayer().isOp()) e.setCancelled(true);
 	}
 	@EventHandler
 	public void onClickInventory(InventoryClickEvent e) {
-		if(LGPlayer.thePlayer((Player)e.getWhoClicked()).getGame() != null)
+		if(LGPlayer.thePlayer((Player)e.getWhoClicked()).getGame() != null && !((Player)e.getWhoClicked()).isOp())
 			e.setCancelled(true);
 	}
 	@EventHandler
 	public void onClickInventory(PlayerSwapHandItemsEvent e) {
-		if(LGPlayer.thePlayer(e.getPlayer()).getGame() != null)
+		if(LGPlayer.thePlayer(e.getPlayer()).getGame() != null && !e.getPlayer().isOp())
 			e.setCancelled(true);
 	}
 }

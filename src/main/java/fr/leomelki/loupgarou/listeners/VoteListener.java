@@ -16,6 +16,7 @@ public class VoteListener implements Listener{
 	}
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
-		e.setCancelled(true);
+		if (!e.getPlayer().isOp())
+			e.setCancelled(true);
 	}
 }
