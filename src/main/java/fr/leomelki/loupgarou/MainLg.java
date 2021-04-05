@@ -100,6 +100,7 @@ public class MainLg extends JavaPlugin{
 			FileConfiguration config = getConfig();
 			config.set("spawns", new ArrayList<List<Double>>());
 			config.set("disableSkins", false);
+			config.set("enforceSpawn", false);
 			for(String role : roles.keySet())//Nombre de participant pour chaque rôle
 				config.set("role."+role, 1);
 			saveConfig();

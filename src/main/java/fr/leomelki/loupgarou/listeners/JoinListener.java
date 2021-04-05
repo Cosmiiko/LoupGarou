@@ -19,6 +19,7 @@ import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
 import fr.leomelki.loupgarou.MainLg;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.events.LGPlayerKilledEvent.Reason;
+import org.bukkit.util.Vector;
 
 public class JoinListener implements Listener{
 	
@@ -46,6 +47,8 @@ public class JoinListener implements Listener{
 				myTeam.sendPacket(player);
 			}
 		p.setFoodLevel(20);
+		if (MainLg.getInstance().getConfig().getBoolean("enforceSpawn"))
+			p.teleport(p.getWorld().getSpawnLocation().add(new Vector(0.5, 0, 0.5)));
 		if(e.getJoinMessage() == null || !e.getJoinMessage().equals("joinall"))
 			p.getPlayer().setResourcePack("http://leomelki.fr/mcgames/ressourcepacks/v32/loup_garou.zip");
 		else {
